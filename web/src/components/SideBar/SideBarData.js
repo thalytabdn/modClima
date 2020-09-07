@@ -26,22 +26,22 @@ export const SideBarData = [
     },
 
     {
-        title: 'Register Mill',
+        title: 'Filter Mill',
         path: '/filter-mills'
     },
 
     {
-        title: 'Register Harvest',
+        title: 'Filter Harvest',
         path: '/filter-harvests'
     },
 
     {
-        title: 'Register Farm',
+        title: 'Filter Farm',
         path: '/filter-farms'
     },
 
     {
-        title: 'Register Field',
+        title: 'Filter Field',
         path:  '/filter-fields'
     },
 
