@@ -1,0 +1,43 @@
+.sidebar-title{
+    color: #fff;
+    font-size: 40px;
+    margin: 20px;    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-menu {
+    background-color: #368d44;
+    width: 25%;
+    height: 100vh;
+    display: cover;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    transform: 850ms;
+}
+
+.nav-text{
+    list-style: none;
+    color: #fff;
+    font-size: 30px;
+}
+
+.nav-item{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    padding: 10px;
+    transition: 0.2s;
+    cursor: pointer;
+    margin: 0;
+}
+
+.nav-item:hover{
+    background: #4c9758;
+}
+
+.nav-item-option{
+   
+}

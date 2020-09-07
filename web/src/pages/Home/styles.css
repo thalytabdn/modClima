@@ -1,0 +1,18 @@
+.home{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-image: url('../../assets/home-background.jpg');
+    background-size: cover;
+    filter: grayscale(100%);
+}
+
+.home-title{
+    margin-bottom: 35%;
+
+    font-size: 50px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 3px;
+    padding: 8px 50px 8px 50px;
+}
