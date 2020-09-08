@@ -3,13 +3,14 @@ import api from '../../services/api';
 
 import { FiTrash2 } from 'react-icons/fi';
 
-export default function FilterField() {
+export default function FilterFarm() {
+    const [name, setName] = useState('');
     const [id, setId] = useState('');
-    const [field, setField] = useState(
+    const [farm, setFarm] = useState(
         {
-            id: '',
-            latitude: 0,
-            longitude: 0
+            id: 0,
+            name: '',
+            fields_id: ''
         }
     );
 
@@ -18,8 +19,8 @@ export default function FilterField() {
     async function handleFilterSubmit(){            
                     
         try {
-            const response = await api.get(`/fields?id=${id}`);
-            setField(response.data[0]); 
+            const response = await api.get(`/farms?id=${id}&name=${name}`);
+            setFarm(response.data[0]); 
 
             if(showItem === false){
                 setShowItem(!showItem);
@@ -36,11 +37,18 @@ export default function FilterField() {
 
                 <div className="input-section">
                     <section>
-                        <h1>Filter Field</h1>
+                        <h1>Filter Farm</h1>
                     </section>
                     
-                    <p>Filter id:</p>   
+                    <p>Name:</p>   
                         
+                    <input 
+                        placeholder="name"
+                        onChange={e => setName(e.target.value)}
+                    />
+
+                    <p>Id:</p> 
+
                     <input 
                         placeholder="id"
                         onChange={e => setId(e.target.value)}
@@ -54,11 +62,11 @@ export default function FilterField() {
                     <div className="item">    
                     
                         <strong>ID: </strong>
-                        <p>{field.id}</p>    
-                        <strong>LATITUDE:</strong>
-                        <p>{field.latitude}</p>    
-                        <strong>LONGITUDE: </strong>
-                        <p>{field.longitude}</p>    
+                        <p>{farm.id}</p>    
+                        <strong>NAME:</strong>
+                        <p>{farm.name}</p>    
+                        <strong>Field(s) Id(s): </strong>
+                        <p className="ids">{farm.fields_id}</p>    
     
                         <button type="button">
                             <FiTrash2 size={20}  color="#a8a8b3"></FiTrash2>

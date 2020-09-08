@@ -2,21 +2,35 @@ import React, { useState } from 'react';
 import api from '../../services/api';
 
 export default function CreateFarm() {
-    const [name, setName] = useState(['']);
-    const [fieldsIds, setFieldsIds] = useState([{id: ''}]);
-
-    console.log(fieldsIds);
+    const [name, setName] = useState('');
+    const [fieldsIds, setFieldsIds] = useState(['']);
 
     function addNewId(id){
-        const fieldsCopy = Array.from(fieldsIds);
-        fieldsCopy.push({id: id});
-        setFieldsIds(fieldsCopy);        
+        setFieldsIds([
+            ...fieldsIds,
+            ''
+        ]) ;
     }
 
-    function updateIds({target}, index){
-        const fieldsCopy = Array.from(fieldsIds);
-        fieldsCopy.splice(index,1, {id: target.value});
-        setFieldsIds(fieldsCopy);
+    async function handleRegister(e){
+        e.preventDefault();
+        
+        const data = {
+            name: name,
+            fields_id: fieldsIds
+        }
+
+        try {
+            const response = await api.post(`/farms`, data);
+            alert(`Successful registration! \n
+                Id: ${response.data.id}\n
+                Name: ${name}\n
+                Fields Ids: ${fieldsIds}`)
+        } catch (error) {
+            const response = error.response;
+            alert(response.data.error);
+        }
+
     }
 
     return(
@@ -25,7 +39,7 @@ export default function CreateFarm() {
                 <section>
                     <h1>Register Farm</h1>
                 </section>
-                <form>                 
+                <form onSubmit={handleRegister}>                 
                     <p>Name:</p>
                     <input 
                         type="string" 
@@ -43,16 +57,16 @@ export default function CreateFarm() {
 
                     {fieldsIds.map((field,index) => {
                         return (
-                            
-                            <input 
-                                key= {index}
-                                type="string" 
-                                placeholder="Field id"
-                                onChange={e => 
-                                    setFieldsIds(index, 'id', e.target.value)
-                                }
-                            />
-                        
+                            <div key= {index}>
+                                <input 
+                                    type="string" 
+                                    placeholder="Field id"
+                                    onChange={(e) => {
+                                        fieldsIds[index] = e.target.value;
+                                        setFieldsIds([...fieldsIds]);
+                                    }}
+                                />
+                            </div>
                         );
                     })}                   
 

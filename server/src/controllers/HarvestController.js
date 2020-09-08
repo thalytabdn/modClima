@@ -18,6 +18,12 @@ module.exports = {
             })
         }
 
+        if(harvest.length==0){
+            return res.status(404).json({
+                error: 'There is no harvest with this datas'
+            })
+        }
+
         return res.json(harvest);
     },
 
@@ -27,10 +33,7 @@ module.exports = {
 
         const start_date = String(data.start_date);
         const end_date = String(data.end_date);
-        
-        const farms_id = String(data.farms_id)
-            .split(',')
-            .map((id) => id.trim());
+        const farms_id = Array(data.farms_id).join(',');
         
         const id = crypto.randomBytes(4).toString('HEX');
 
@@ -41,7 +44,21 @@ module.exports = {
             farms_id
         };
 
-        await connection('harvests').insert(harvest);
+        const idsExists = await connection('farms').select('*').whereIn('id',data.farms_id);
+
+        if(idsExists.length == 0){
+            return res.status(404).json({
+                error: 'Invalid id(s) '
+            })
+        }
+
+        try {
+            await connection('harvests').insert(harvest);
+        } catch (error) {
+            return res.status(400).json({
+                error: 'Registration error'
+            })
+        }
 
         return res.json(harvest);
     },

@@ -1,5 +1,6 @@
 const crypto = require('crypto');
 const connection = require("../database/connections");
+const knexfile = require('../../knexfile');
 
 module.exports = {
 
@@ -18,6 +19,12 @@ module.exports = {
             })
         }
 
+        if(farm.length==0){
+            return res.status(404).json({
+                error: 'There is no farm with this datas'
+            })
+        }
+
         return res.json(farm);
     },
 
@@ -26,35 +33,33 @@ module.exports = {
         const data = req.body;
 
         const name = String(data.name);
-        const fields_id = String(data.fields_id)
-            .split(',')
-            .map((id) => id.trim());
+        const fields_id = Array(data.fields_id).join(',');
+
         
         const id = crypto.randomBytes(4).toString('HEX');
-
+        
         const farm = {
             id,
             name,
             fields_id
         };
 
-        await connection('farms').insert(farm);
+        const idsExists = await connection('fields').select('*').whereIn('id',data.fields_id);
+
+        if(idsExists.length == 0){
+            return res.status(404).json({
+                error: 'Invalid id(s) '
+            })
+        }
+
+        try {
+            await connection('farms').insert(farm);
+        } catch (error) {
+            return res.status(400).json({
+                error: 'Registration error'
+            })
+        }
 
         return res.json(farm);
     },
-
-    /**Função para adicionar novas fields a determinado item da tabela */
-
-    // async update(req,res){
-    //     const data = req.body;
-
-    //     const id = String(data.id);
-    //     const fields_id = String(data.fields_id)
-    //     .split(',')
-    //     .map((id) => id.trim());
-
-    //     await connection('farms')
-    //         .update('fields_id', fields_id)
-    //         .where('id','=',id);
-    // }
 }

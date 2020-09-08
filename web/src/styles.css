@@ -1,6 +1,6 @@
 .item-container {
     width: 100%;
-    max-width: 1180px;
+    height: inherit;
     padding: 0 30px;
     margin: 32px auto;
     display: flex;
@@ -23,6 +23,7 @@
     padding: 24px;
     border-radius: 8px;
     position: relative;
+    margin: 10px
 }
 
 .item-container  .item button {
@@ -44,16 +45,6 @@
 
 .item-container  .item p + strong {
     margin-top: 32px;   
-}
-
-.item-container .item-image{
-    width: 50%;
-    height: 100%;
-}
-
-.item-container .item-image{
-    width: 50%;
-    height: 100%;
 }
 
 .item-container  .item p {
