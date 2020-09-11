@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import api from '../../services/api';
 
-import { FiTrash2 } from 'react-icons/fi';
-
 export default function FilterField() {
     const [id, setId] = useState('');
     const [field, setField] = useState(
@@ -12,7 +10,6 @@ export default function FilterField() {
             longitude: 0
         }
     );
-
     const [showItem, setShowItem] = useState(false);
     
     async function handleFilterSubmit(){            
@@ -20,7 +17,6 @@ export default function FilterField() {
         try {
             const response = await api.get(`/fields?id=${id}`);
             setField(response.data[0]); 
-
             if(showItem === false){
                 setShowItem(!showItem);
             }
@@ -48,25 +44,19 @@ export default function FilterField() {
                         
                     <button className="button" onClick={handleFilterSubmit}>Filter</button>
                 </div>
-
+                
                 <div className={showItem ? "item-container" : "hidden"}>
 
                     <div className="item">    
-                    
                         <strong>ID: </strong>
                         <p>{field.id}</p>    
                         <strong>LATITUDE:</strong>
                         <p>{field.latitude}</p>    
                         <strong>LONGITUDE: </strong>
-                        <p>{field.longitude}</p>    
-    
-                        <button type="button">
-                            <FiTrash2 size={20}  color="#a8a8b3"></FiTrash2>
-                        </button>
-                            
-                    </div>
+                        <p>{field.longitude}</p>                                
+                    </div>                
+
                 </div>
-               
             </div>
         </div>
     );

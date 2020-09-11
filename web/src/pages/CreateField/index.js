@@ -43,7 +43,6 @@ export default function CreateField() {
                         placeholder="Longitude"
                         onChange={e => setLongitude(e.target.value)}
                     />
-                    
                 
                     <button className="button" type="submit">Cadastrar</button>
                 </form>

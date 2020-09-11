@@ -1,7 +1,8 @@
+/* Styles of items */
+
 .item-container {
     width: 100%;
     height: inherit;
-    padding: 0 30px;
     margin: 32px auto;
     display: flex;
     align-items: center;

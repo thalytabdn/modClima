@@ -2,7 +2,7 @@ import React from 'react';
 import Routes from './routes';
 
 import './global.css';
-import './styles.css';
+import './itemStyles.css';
 
 function App() {
   return (

@@ -1,17 +1,15 @@
 import React, { useState } from 'react';
 import api from '../../services/api';
 
-import { FiTrash2 } from 'react-icons/fi';
-
 export default function FilterFarm() {
     const [startDate, setStartDate] = useState('');
     const [endDate, setEndDate] = useState('');
     const [harvest, setHarvest] = useState([
         {
-            id: 0,
+            id: '',
             start_date: '',
             end_date: '',
-            end_date: ''
+            farms_id: ''
         }
     ]);
 
@@ -72,10 +70,6 @@ export default function FilterFarm() {
                         <strong>Farm(s) Id(s): </strong>
                         <p className="ids">{harvest.farms_id}</p>    
         
-                        <button type="button">
-                            <FiTrash2 size={20}  color="#a8a8b3"></FiTrash2>
-                        </button>
-                                
                     </div> 
              
 

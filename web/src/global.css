@@ -30,23 +30,8 @@ input{
     padding: 0 24px;
 }
 
-form checkbox{
-    height: 30px;
-}
-
-form textarea {
-    width: 100%;
-    resize: vertical;
-    min-height: 140px;
-    height: 60px;
-    color: #333;
-    border: 1px solid #dcdce6;
-    border-radius: 8px;
-    padding: 16px 24px;
-    line-height: 24px;
-}
-
 p{
+    width: 68vh;
     font-size: 20px;
     line-height: 32px;
     margin: 15px;
@@ -117,7 +102,7 @@ p{
 }
 
 .content{
-    min-width: 40rem;
+    min-width: 10rem;
 }
 
 .register-container .content section h1 {

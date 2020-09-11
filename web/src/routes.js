@@ -11,7 +11,7 @@ import CreateHarvest from './pages/CreateHarvest';
 import FilterField from './pages/FilterField ';
 import FilterFarm from './pages/FilterFarm';
 import FilterHarvest from './pages/FilterHarvest';
-
+import FilterMill from './pages/FilterMill';
 
 export default function Routes(){
     return (
@@ -29,6 +29,8 @@ export default function Routes(){
                 <Route path='/filter-fields' component={FilterField}/>
                 <Route path='/filter-farms' component={FilterFarm}/>
                 <Route path='/filter-harvests' component={FilterHarvest}/>
+                <Route path='/filter-mills' component={FilterMill}/>
+
             </Switch>
 
         </BrowserRouter>
