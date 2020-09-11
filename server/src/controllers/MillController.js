@@ -19,6 +19,12 @@ module.exports = {
             })
         }
 
+        if(mill.length==0){
+            return res.status(404).json({
+                error: 'There is no mill with this datas'
+            })
+        }
+
         return res.json(mill);
     },
 
