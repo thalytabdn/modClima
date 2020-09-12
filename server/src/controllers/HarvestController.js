@@ -46,6 +46,12 @@ module.exports = {
 
         const idsExists = await connection('farms').select('*').whereIn('id',data.farms_id);
 
+        if(start_date==null || end_date==null ){
+            return res.status(400).json({
+                error: 'Registration error'
+            })
+        }
+
         if(idsExists.length == 0){
             return res.status(404).json({
                 error: 'Invalid id(s) '

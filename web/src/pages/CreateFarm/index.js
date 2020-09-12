@@ -42,9 +42,10 @@ export default function CreateFarm() {
                 <form onSubmit={handleRegister}>                 
                     <p>Name:</p>
                     <input 
+                        className="input-name"
                         type="string" 
                         placeholder="Name" 
-                        onChange={e => setName(e.target.value)}        
+                        onChange={e => setName(e.target.value.trim())}        
                     /> 
                     <p>Insert field(s) id(s) below:
                         <span>
@@ -59,10 +60,11 @@ export default function CreateFarm() {
                         return (
                             <div key= {index}>
                                 <input 
+                                    className='input-id'
                                     type="string" 
                                     placeholder="Field id"
                                     onChange={(e) => {
-                                        fieldsIds[index] = e.target.value;
+                                        fieldsIds[index] = e.target.value.trim();
                                         setFieldsIds([...fieldsIds]);
                                     }}
                                 />

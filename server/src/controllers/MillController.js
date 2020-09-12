@@ -45,8 +45,27 @@ module.exports = {
             name,
             harvests_id
         };
+        const idsExists = await connection('harvests').select('*').whereIn('id',data.harvests_id);
 
-        await connection('mills').insert(mill);
+        if(name.length==0){
+            return res.status(400).json({
+                error: 'Registration error'
+            })
+        }
+
+        if(idsExists.length == 0){
+            return res.status(404).json({
+                error: 'Invalid id(s) '
+            })
+        }
+
+        try {
+            await connection('mills').insert(mill);
+        } catch (error) {
+            return res.status(400).json({
+                error: 'Registration error'
+            })
+        }       
 
         return res.json(mill);
     },

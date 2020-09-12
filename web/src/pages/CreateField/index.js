@@ -36,14 +36,14 @@ export default function CreateField() {
                     <input 
                         className="input-latitude"
                         placeholder="Latitude"
-                        onChange={e => setLatitude(e.target.value)}
+                        onChange={e => setLatitude(e.target.value.trim())}
                     />
 
                     <p>Longitude:</p>
                     <input 
                         className="input-longitude"
                         placeholder="Longitude"
-                        onChange={e => setLongitude(e.target.value)}
+                        onChange={e => setLongitude(e.target.value.trim())}
                     />
                 
                     <button className="button" type="submit">Cadastrar</button>

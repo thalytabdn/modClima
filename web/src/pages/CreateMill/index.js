@@ -43,7 +43,7 @@ export default function CreateHarvest() {
                     <p>Name:</p>
                     <input 
                         type="text" 
-                        onChange={e => setName(e.target.value)}        
+                        onChange={e => setName(e.target.value.trim())}        
                     /> 
 
                     <p>Insert Harvest(s) id(s) below:
@@ -62,7 +62,7 @@ export default function CreateHarvest() {
                                     type="string" 
                                     placeholder="Harvest id"
                                     onChange={(e) => {
-                                        harvestsIds[index] = e.target.value;
+                                        harvestsIds[index] = e.target.value.trim();
                                         setHarvestsIds([...harvestsIds]);
                                     }}
                                 />

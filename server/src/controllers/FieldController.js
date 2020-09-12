@@ -32,11 +32,23 @@ module.exports = {
 
         const id = crypto.randomBytes(4).toString('HEX');
 
-        await connection('fields').insert({
-            id,
-            latitude,
-            longitude
-        })
+        if(latitude==0 || longitude==0){
+            return res.status(400).json({
+                error: 'Registration error'
+            })
+        }
+
+        try {
+            await connection('fields').insert({
+                id,
+                latitude,
+                longitude
+            })
+        } catch (error) {
+            return res.status(400).json({
+                error: 'Registration error'
+            })
+        }
 
         return res.json({
             id,
