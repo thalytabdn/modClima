@@ -37,7 +37,8 @@ export default function FilterField() {
                     
                     <p>Filter id:</p>   
                         
-                    <input 
+                    <input
+                        className="input-id" 
                         placeholder="id"
                         onChange={e => setId(e.target.value)}
                     />
@@ -49,7 +50,7 @@ export default function FilterField() {
 
                     <div className="item">    
                         <strong>ID: </strong>
-                        <p>{field.id}</p>    
+                        <p className="result-id">{field.id}</p>    
                         <strong>LATITUDE:</strong>
                         <p>{field.latitude}</p>    
                         <strong>LONGITUDE: </strong>

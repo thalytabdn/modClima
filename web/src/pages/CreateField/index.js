@@ -34,12 +34,14 @@ export default function CreateField() {
                     <p>Latitude:</p>   
                     
                     <input 
+                        className="input-latitude"
                         placeholder="Latitude"
                         onChange={e => setLatitude(e.target.value)}
                     />
 
                     <p>Longitude:</p>
                     <input 
+                        className="input-longitude"
                         placeholder="Longitude"
                         onChange={e => setLongitude(e.target.value)}
                     />

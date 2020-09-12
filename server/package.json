@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon src/index.js"
+    "start": "nodemon src/index.js",
+    "cypress": "cypress open",
+    "knex:migrate": "knex migrate:latest"
   },
   "keywords": [],
   "author": "",
@@ -17,6 +19,7 @@
     "sqlite3": "^5.0.0"
   },
   "devDependencies": {
+    "cypress": "^5.1.0",
     "nodemon": "^2.0.4"
   }
 }
