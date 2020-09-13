@@ -12,6 +12,14 @@ The project was developed with the following technologies:
 - [Cypress](https://www.cypress.io/)
 - [Sqlite](https://www.sqlite.org/index.html)
 
+## :heavy_check_mark: Result
+
+ <p align="center">
+  <img src="result.png"/>
+</p>
+
+[Live demo](https://modclima.herokuapp.com/)
+
 ## ✨ How to use
 
 - ### **Pre-requirements**
