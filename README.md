@@ -54,5 +54,5 @@ The project was developed with the following technologies:
   ---
   
 <h4 align="center">
-    Build with by <a href="https://www.linkedin.com/in/thalytabdn/" target="_blank">Thalyta Barbosa</a>
+    Build by <a href="https://www.linkedin.com/in/thalytabdn/" target="_blank">Thalyta Barbosa</a>
 </h4>
